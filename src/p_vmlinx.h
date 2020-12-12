@@ -62,7 +62,7 @@ public:
     virtual int getVersion() const { return 13; }
 
 protected:
-    unsigned int const my_e_machine;
+    unsigned const my_e_machine;
     unsigned char const my_elfclass;
     unsigned char const my_elfdata;
     char const *const my_boot_label;

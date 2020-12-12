@@ -665,12 +665,12 @@ void PackPs1::pack(OutputFile *fo)
     printf("%-13s: decompressor  : %8ld bytes\n", getName(), (long) lsize - h_len - pad_code);
     printf("%-13s: header comp   : %8ld bytes\n", getName(), (long) sz_cbh);
     printf("%-13s: overlap       : %8ld bytes\n", getName(), (long) overlap);
-    printf("%-13s: load address  : %08X bytes\n", getName(), (unsigned int) oh.tx_ptr);
-    printf("%-13s: code entry    : %08X bytes\n", getName(), (unsigned int) oh.epc);
-    printf("%-13s: bbs start     : %08X bytes\n", getName(), (unsigned int) bss_start);
-    printf("%-13s: bbs end       : %08X bytes\n", getName(), (unsigned int) bss_end);
-    printf("%-13s: eof in mem IF : %08X bytes\n", getName(), (unsigned int) ih.tx_ptr + ih.tx_len);
-    printf("%-13s: eof in mem OF : %08X bytes\n", getName(), (unsigned int) oh.tx_ptr + oh.tx_len);
+    printf("%-13s: load address  : %08X bytes\n", getName(), (unsigned) oh.tx_ptr);
+    printf("%-13s: code entry    : %08X bytes\n", getName(), (unsigned) oh.epc);
+    printf("%-13s: bbs start     : %08X bytes\n", getName(), (unsigned) bss_start);
+    printf("%-13s: bbs end       : %08X bytes\n", getName(), (unsigned) bss_end);
+    printf("%-13s: eof in mem IF : %08X bytes\n", getName(), (unsigned) ih.tx_ptr + ih.tx_len);
+    printf("%-13s: eof in mem OF : %08X bytes\n", getName(), (unsigned) oh.tx_ptr + oh.tx_len);
     unsigned char i = 0;
     if (isCon) { if (foundBss) i = 1; }
     else { i = 2; if (M_IS_LZMA(ph.method)) { if (!foundBss) i = 3; else i = 4; } }

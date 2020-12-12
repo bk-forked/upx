@@ -65,6 +65,7 @@
 #  error "UINT_MAX"
 #endif
 ACC_COMPILE_TIME_ASSERT_HEADER(sizeof(int) == 4)
+ACC_COMPILE_TIME_ASSERT_HEADER(sizeof(long long) == 8)
 ACC_COMPILE_TIME_ASSERT_HEADER(-1 == ~0) // two's complement - see http://wg21.link/P0907R4
 ACC_COMPILE_TIME_ASSERT_HEADER(0u-1 == ~0u) // two's complement - see http://wg21.link/P0907R4
 ACC_COMPILE_TIME_ASSERT_HEADER((1u << 31) << 1 == 0)

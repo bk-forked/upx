@@ -595,7 +595,7 @@ void PackBvmlinuzI386::pack(OutputFile *fo)
             (res->lit_pos_bits << 8) |
             (res->pos_bits << 16);
         if (linker->bele->isBE()) // big endian - bswap32
-            acc_swab32s(&properties);
+            properties = acc_swab32(properties);
         linker->defineSymbol("lzma_properties", properties);
         // -2 for properties
         linker->defineSymbol("lzma_c_len", ph.c_len - 2);
@@ -741,7 +741,7 @@ bool PackVmlinuzARMEL::canPack()
 
 int PackVmlinuzARMEL::readFileHeader()
 {
-    unsigned int hdr[8];
+    upx_uint32_t hdr[8];
 
     fi->readx(hdr, sizeof(hdr));
     for (int j=0; j < 8; ++j) {

@@ -74,10 +74,12 @@ CXXFLAGS += $(CXXFLAGS_WERROR)
 
 ifeq ($(BUILD_TYPE_SANITIZE),1)
 CXXFLAGS_SANITIZE ?= -fsanitize=address,undefined -fno-omit-frame-pointer -DACC_CFG_NO_UNALIGNED
+else
+CXXFLAGS_SANITIZE ?= -fstack-protector-all
+endif
 CXXFLAGS += $(CXXFLAGS_SANITIZE)
 # these are the only 2 objects that are actually speed-sensitive
 compress_lzma$(objext) filteri$(objext) : override CXXFLAGS_SANITIZE =
-endif
 
 # rules
 all: upx$(exeext) | ./.depend

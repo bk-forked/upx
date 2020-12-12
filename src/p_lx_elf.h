@@ -67,7 +67,7 @@ protected:
     static unsigned gnu_hash(char const *) /*const*/;
 
 protected:
-    static unsigned int const asl_delta = (1u<<12);  // --android-shlib extra page
+    static unsigned const asl_delta = (1u<<12);  // --android-shlib extra page
     unsigned e_type;
     unsigned e_phnum;       /* Program header table entry count */
     unsigned e_shnum;
@@ -183,11 +183,11 @@ protected:
     unsigned plt_off;
     unsigned page_mask;  // AND clears the offset-within-page
 
-    Elf32_Dyn    const *dynseg;   // from PT_DYNAMIC
-    unsigned int const *hashtab;  // from DT_HASH
-    unsigned int const *gashtab;  // from DT_GNU_HASH
-    Elf32_Sym    const *dynsym;   // from DT_SYMTAB
-    Elf32_Sym    const *jni_onload_sym;
+    Elf32_Dyn const *dynseg;   // from PT_DYNAMIC
+    unsigned  const *hashtab;  // from DT_HASH
+    unsigned  const *gashtab;  // from DT_GNU_HASH
+    Elf32_Sym const *dynsym;   // from DT_SYMTAB
+    Elf32_Sym const *jni_onload_sym;
 
     Elf32_Shdr       *sec_strndx;
     Elf32_Shdr const *sec_dynsym;
@@ -318,11 +318,11 @@ protected:
     upx_uint64_t plt_off;
     upx_uint64_t page_mask;  // AND clears the offset-within-page
 
-    Elf64_Dyn    const *dynseg;   // from PT_DYNAMIC
-    unsigned int const *hashtab;  // from DT_HASH
-    unsigned int const *gashtab;  // from DT_GNU_HASH
-    Elf64_Sym    const *dynsym;   // from DT_SYMTAB
-    Elf64_Sym    const *jni_onload_sym;
+    Elf64_Dyn const *dynseg;   // from PT_DYNAMIC
+    unsigned  const *hashtab;  // from DT_HASH
+    unsigned  const *gashtab;  // from DT_GNU_HASH
+    Elf64_Sym const *dynsym;   // from DT_SYMTAB
+    Elf64_Sym const *jni_onload_sym;
 
     Elf64_Shdr       *sec_strndx;
     Elf64_Shdr const *sec_dynsym;

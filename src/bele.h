@@ -283,6 +283,7 @@ inline unsigned acc_swab32(unsigned v)
 }
 
 
+#if 0
 inline unsigned acc_swab16p(const upx_uint16_t *p)
 {
     return acc_swab16(*p);
@@ -309,6 +310,7 @@ inline void acc_ua_swab16s(void *p)
 {
     set_be16(p, get_le16(p));
 }
+#endif
 
 inline void acc_ua_swab32s(void *p)
 {
