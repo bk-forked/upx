@@ -1289,12 +1289,16 @@ static bool test(void)
     return true;
 }};
 
+template <class T> struct TestIntegerWrap {
+static inline bool test_inc(T x) { return x + 1 > x; }
+static inline bool test_dec(T x) { return x - 1 < x; }
+};
 
 #define ACC_WANT_ACC_CHK_CH 1
 #undef ACCCHK_ASSERT
 #include "miniacc.h"
 
-__acc_static_noinline void upx_sanity_check(void)
+void upx_compiler_sanity_check(void)
 {
 #define ACC_WANT_ACC_CHK_CH 1
 #undef ACCCHK_ASSERT
@@ -1340,6 +1344,7 @@ __acc_static_noinline void upx_sanity_check(void)
         else { assert(revlen == 12 || revlen == 13); }
         if (revlen == 6 || revlen == 13) { assert(gitrev[revlen-1] == '+'); }
     }
+    assert(UPX_RSIZE_MAX_MEM == 805306368);
 
 #if 1
     assert(TestBELE<LE16>::test());
@@ -1396,6 +1401,15 @@ __acc_static_noinline void upx_sanity_check(void)
     assert(get_be64_signed(d) == UPX_INT64_C(9186918263483431288));
     }
 #endif
+
+    assert( TestIntegerWrap<int>::test_inc(0));
+    assert(!TestIntegerWrap<int>::test_inc(INT_MAX));
+    assert( TestIntegerWrap<int>::test_dec(0));
+    assert(!TestIntegerWrap<int>::test_dec(INT_MIN));
+    assert( TestIntegerWrap<unsigned>::test_inc(0));
+    assert(!TestIntegerWrap<unsigned>::test_inc(UINT_MAX));
+    assert( TestIntegerWrap<unsigned>::test_dec(1));
+    assert(!TestIntegerWrap<unsigned>::test_dec(0));
 }
 
 
@@ -1427,7 +1441,7 @@ int __acc_cdecl_main main(int argc, char *argv[])
 #endif
     acc_wildargv(&argc, &argv);
 
-    upx_sanity_check();
+    upx_compiler_sanity_check();
     opt->reset();
 
     if (!argv[0] || !argv[0][0])

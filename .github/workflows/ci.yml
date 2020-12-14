@@ -135,7 +135,7 @@ jobs:
           where cl & where link
           set BDIR=%H%\build\%C%\%B%
           md %BDIR% %BDIR%\ucl-1.03 %BDIR%\upx %BDIR%\upx-testsuite %BDIR%\zlib-1.2.8
-          set DEFS=-D_CRT_SECURE_NO_WARNINGS
+          set DEFS=-D_CRT_SECURE_NO_WARNINGS –d2UndefIntOverflow–
           git rev-parse --short=12 HEAD > %BDIR%\upx\.GITREV.txt
           @REM build UCL
           cd %BDIR%\ucl-1.03
